@@ -1,5 +1,6 @@
 from bs4 import BeautifulSoup
 import csv
+from glob import glob
 
 def parse(file: str):
   with open(f'{file.lower()}.html') as f:
@@ -18,5 +19,5 @@ def parse(file: str):
     writer.writeheader()
     writer.writerows(res)
 
-parse("Osaka")
-parse("Tokyo")
+for file in glob("*.html"):
+  parse(file.split(".")[0])
